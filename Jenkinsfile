@@ -13,7 +13,7 @@ pipeline {
 		}
 		stage ('Deploy Backend') {
 			steps {
-				echo '${params.enviroment}'
+				sh "echo parametros: ${params.enviroment}"
 				deploy adapters: [tomcat8(credentialsId: 'tomcat_login2', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
 			}
 		}
